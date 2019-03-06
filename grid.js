@@ -1,13 +1,19 @@
-const squaresPerRow = 16;
-const rows = 16;
+const columns = 32;
+const width = 512;
+const pixelSize = width / columns;
 
 const container = document.querySelector('#container');
-container.style.cssText = 'display: inline-grid; grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto';
+container.style.cssText = `border: 1px solid black; width: ${width}px; height: ${width}px; display: inline-grid; grid-template-columns: repeat(${columns}, 1fr); grid-template-rows = repeat(${columns}, 1fr)`;
 
-for (let j = 0; j < rows; j++) {
-	for (let i = 0; i < squaresPerRow; i++) {
+
+for (let j = 0; j < columns; j++) {
+	for (let i = 0; i < columns; i++) {
 		const div = document.createElement('div');
-		div.style.cssText = 'padding: 15px; border: 1px solid black; margin: 0';
+		div.style.cssText = `border: 1px solid gray`;
+		
+		div.addEventListener('mouseover', () => {
+			div.style.background = 'black';
+		});
 		container.appendChild(div);
 	}
 }
